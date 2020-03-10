@@ -26,7 +26,7 @@ module.exports = {
 		}
     });
 	app.get('/', function(req, res){
-		var results = Results.findAll(limit: 10, order: [ ['scoreChrono']]).then(() => {
+	var results = Results.findAll({limit: 10, order: [ ['scoreChrono']]}).then(() => {
 			res.send(results);
 		});
 	});

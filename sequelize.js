@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize');
 module.exports = {
 	connection: function(app) {
-		const sequelize = new Sequelize("mmDB", "root", "123",		
+		const sequelize = new Sequelize("mmDB", "root", "",		
 				{
 					define: {
 						freezeTableName: true,	// do not add "s" to table names
