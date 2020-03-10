@@ -16,7 +16,7 @@ db.sync({force: true}).then(() => {
 	console.log('Results tables OK');
 }) 
 
-Results.sync({force: true});
+Results.sync({force: false});
 		
 // Force sync all models
 /*
