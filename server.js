@@ -15,4 +15,4 @@ logger.info(appRoot.toString());
 routes.start(app);
 logger.info('Set routes OK!');
 
-app.listen(process.env.PORT||1313);
+app.listen(process.env.PORT||4242);

@@ -15,19 +15,29 @@ module.exports = {
       res.send('PONG !!!');
     });
 	app.post('/', function(req, res){
-		if(typeof req.body['pseudo'] != "undefined" && req.body['scoreChrono'] != ""){
+		//console.log(req);
+		if(typeof req.query['pseudo'] != "undefined" && typeof req.query['scoreChrono'] != "undefined"){
 			var result = {
-					"pseudo": req.body['pseudo'],
-					"scoreChrono": req.body['scoreChrono']
+					"pseudo": req.query['pseudo'],
+					"scoreChrono": req.query['scoreChrono']
 			}
 			Results.create(result).then(() => {
 				console.log('result added');
+				res.send('result added');
 			});
+		}
+		else{
+			res.send('error');
 		}
     });
 	app.get('/', function(req, res){
-	var results = Results.findAll({limit: 10, order: [ ['scoreChrono']]}).then(() => {
-			res.send(results);
+		Results.findAll({limit: 10, order: [ ['scoreChrono']]}).then(results => {
+			console.log(results);
+			var resStr = [];
+			for(var i = 0; i < results.length; i++){
+				resStr.push(results[i].scoreChrono+" - "+ results[i].pseudo);
+			}
+			res.send(resStr);
 		});
 	});
   }
