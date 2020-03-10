@@ -2,11 +2,12 @@
 const Sequelize = require('sequelize');
 module.exports = {
 	connection: function(app) {
+		var sequelize = null;
 		if(process.env.DATABASE_URL_POSTGRES){
-			const sequelize = new Sequelize(process.env.DATABASE_URL_POSTGRES);
+			sequelize = new Sequelize(process.env.DATABASE_URL_POSTGRES);
 		}
 		else{
-			const sequelize = new Sequelize("mmDB", "root", "", {
+			sequelize = new Sequelize("mmDB", "root", "", {
 				define: {
 					freezeTableName: true,	// do not add "s" to table names
 					timestamps: false
