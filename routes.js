@@ -37,6 +37,15 @@ module.exports = {
 			for(var i = 0; i < results.length; i++){
 				resStr.push(results[i].scoreChrono+" - "+ results[i].pseudo);
 			}
+			var scoreLimit = results[results.length-1].scoreChrono;
+			Results.findAll({order: [ ['scoreChrono']]}).then(resultsAll => {
+				if(resultsAll.length > 10){
+					for(var i = 0; i < resultsAll.length; i++){
+					if(resultsAll[i].scoreChrono > scoreLimit)
+						resultsAll[i].destroy();
+					}
+				}
+			});
 			res.send(resStr);
 		});
 	});

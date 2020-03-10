@@ -12,11 +12,11 @@ var Results = require(appRoot + "/models/Results.js");
 
 
 // Synchronise database with model
-/*db.sync({force: true}).then(() => {
+db.sync({force: true}).then(() => {
 	console.log('Results tables OK');
-}) /*
+}) 
 
-//Results.sync({force: true});
+Results.sync({force: true});
 		
 // Force sync all models
 /*
