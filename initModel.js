@@ -17,10 +17,7 @@ db.sync({force: true}).then(() => {
 }) 
 
 Results.sync({force: true});
-	}).catch (err => {
-			console.error(err.message); // "boom"
-		});	
-
+		
 // Force sync all models
 /*
 co(function *(){ 
