@@ -14,7 +14,7 @@ module.exports = {
     app.get('/home', function(req, res){
       res.send('PONG !!!');
     });
-	app.post('/', function(req, res){
+	app.get('/set/', function(req, res){
 		//console.log(req);
 		if(typeof req.query['pseudo'] != "undefined" && typeof req.query['scoreChrono'] != "undefined"){
 			var result = {
