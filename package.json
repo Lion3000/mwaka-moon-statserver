@@ -1,0 +1,32 @@
+{
+  "name": "JustOneKissBackend",
+  "version": "1.0.0",
+  "description": "Partie Backend du projet \r Technologie : NodeJs",
+  "main": "test.js",
+  "scripts": {
+    "start": "node ./server.js",
+    "start-dev": "nodemon ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gitea/LionChouette/JustOneKissBackend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "body-parser": "^1.19.0",
+    "co": "^4.6.0",
+    "config": "^3.2.2",
+    "cors": "^2.8.5",
+    "express": "^4.13.3",
+    "express-session": "^1.15.6",
+    "log4js": "^0.6.29",
+    "mariadb": "^2.1.1",
+    "morgan": "^1.6.1",
+    "node-entity": "^0.5.6",
+    "sequelize": "^5.18.3"
+  }
+}
