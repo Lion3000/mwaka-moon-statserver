@@ -51,5 +51,21 @@ module.exports = {
 			res.send(resStr);
 		});
 	});
+	
+	app.get('/removeAllScores', function(req, res){
+		Results.findAll().then(results => {
+			for(var i = 0; i < results.length; i++){
+				resultsAll[i].destroy();
+			}
+		});
+		res.send("ok");
+	});
+	
+	app.get('/removeLastScore', function(req, res){
+		Results.findAll({limit: 1, order: [ ['resultId', 'DESC']]}).then(results => {
+				resultsAll[0].destroy();
+		});
+		res.send("ok");
+	});
   }
 }
