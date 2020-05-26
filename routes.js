@@ -54,24 +54,24 @@ module.exports = {
 		var deleted = [];
 		Results.findAll().then(results => {
 			for(var i = 0; i < results.length; i++){
-				resultsAll[i].destroy().then(function(instance){
+				results[i].destroy().then(function(instance){
 				  // instance = null if row has not been deleted
 				  deleted[i] = instance;
 				});
 			}
 		});
-		res.send("ok" + deleted);
+		res.send("deleted instances : " + deleted);
 	});
 	
 	app.get('/removeLastScore', function(req, res){
 		var deleted = null;
 		Results.findAll({limit: 1, order: [['resultId', 'DESC']]}).then(results => {
-				resultsAll[0].destroy().then(function(instance){
+				results[0].destroy().then(function(instance){
 				  // instance = null if row has not been deleted
 				  deleted = instance;
 				});
 		});
-		res.send("ok" + deleted);
+		res.send("deleted instance :  " + deleted);
 	});
   }
 }
