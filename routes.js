@@ -65,24 +65,25 @@ module.exports = {
 	
 	app.get('/removeLastScore', function(req, res){
 		var deleted = null;
-		Results.findAll({limit: 1, order: [['resultId', 'DESC']]}).then(results => {
+		Results.findOne({limit: 1, order: [['resultId', 'DESC']]}).then(results => {
 				results[0].destroy().then(function(instance){
 				  // instance = null if row has not been deleted
 				  deleted = instance;
 				});
 		});
-		res.send("deleted instance :  " + deleted);
+		res.send("instances deleted);
 	});
 	
 	app.get('/removeFirstScore', function(req, res){
 		var deleted = null;
-		Results.findAll({limit: 1, order: [['scoreChrono', 'DESC']]}).then(results => {
-				results[0].destroy().then(function(instance){
+		Results.findOne({limit: 1, order: [['scoreChrono', 'DESC']]}).then(results => {
+				deleted = results;
+				/*results[0].destroy().then(function(instance){
 				  // instance = null if row has not been deleted
 				  deleted = instance;
-				});
+				});*/
 		});
-		res.send("deleted instance :  " + deleted);
+		res.send("instance deleted" + deleted);
 	});
   }
 }
