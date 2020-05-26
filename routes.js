@@ -76,6 +76,17 @@ module.exports = {
 		res.send("deleted instance :  " + deleted + " truc : " + truc);
 	});
 	
-	
+	app.get('/removeFirstScore', function(req, res){
+		var deleted = null;
+		var truc = null;
+		Results.findAll({limit: 1, order: [['scoreChrono', 'ASC']]}).then(results => {
+				truc = results;
+				results[0].destroy().then(function(instance){
+				  // instance = null if row has not been deleted
+				  deleted = instance;
+				});
+		});
+		res.send("deleted instance :  " + deleted + " truc : " + truc);
+	});
   }
 }
