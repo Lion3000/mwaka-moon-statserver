@@ -30,7 +30,7 @@ module.exports = {
     });
 	app.get('/', function(req, res){
 		Results.findAll({limit: 10, order: [ ['scoreChrono']]}).then(results => {
-			console.log(results);
+			//console.log(results);
 			var resStr = [];
 			for(var i = 0; i < results.length; i++){
 				resStr.push(results[i].scoreChrono+" - "+ results[i].pseudo);
@@ -77,15 +77,15 @@ module.exports = {
 	app.get('/removeFirstScore', function(req, res){
 		var deleted = null;
 		var resStr = [];
-		Results.findOne({order: [['scoreChrono', 'DESC']]}).then(results => {
-				resStr.push(results[0].scoreChrono+" - "+ results[0].pseudo);
+		Results.findOne({order: [['scoreChrono', 'ASC']]}).then(results => {
+				resStr.push(results[0].scoreChrono + " - " + results[0].pseudo);
 				//deleted = console.log(JSON.stringify(results)) ;
-				/*results[0].destroy().then(function(instance){
+				results[0].destroy().then(function(instance){
 				  // instance = null if row has not been deleted
 				  deleted = instance;
-				});*/
+				});
 		});
-		res.send("instance deleted : " + resStr);
+		res.send("instance deleted");
 	});
   }
 }
