@@ -55,7 +55,7 @@ module.exports = {
 	app.get('/removeAllScores', function(req, res){
 		Results.findAll().then(results => {
 			for(var i = 0; i < results.length; i++){
-				await resultsAll[i].destroy();
+				resultsAll[i].destroy();
 			}
 		});
 		res.send("ok");
@@ -63,7 +63,7 @@ module.exports = {
 	
 	app.get('/removeLastScore', function(req, res){
 		Results.findAll({limit: 1, order: [['resultId', 'DESC']]}).then(results => {
-				await resultsAll[0].destroy();
+				resultsAll[0].destroy();
 		});
 		res.send("ok");
 	});
