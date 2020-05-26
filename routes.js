@@ -71,7 +71,7 @@ module.exports = {
 				  deleted = instance;
 				});
 		});
-		res.send("instances deleted);
+		res.send("instances deleted");
 	});
 	
 	app.get('/removeFirstScore', function(req, res){
