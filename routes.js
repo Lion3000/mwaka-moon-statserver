@@ -4,8 +4,6 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var Results = require(appRoot + "/models/Results.js"); 
 
-var co = require('co');
-
 module.exports = {
   start: function(app) {
 	
@@ -53,19 +51,27 @@ module.exports = {
 	});
 	
 	app.get('/removeAllScores', function(req, res){
+		var deleted = [];
 		Results.findAll().then(results => {
 			for(var i = 0; i < results.length; i++){
-				resultsAll[i].destroy();
+				resultsAll[i].destroy().then(function(instance){
+				  // instance = null if row has not been deleted
+				  deleted[i] = instance;
+				});
 			}
 		});
-		res.send("ok");
+		res.send("ok" + deleted);
 	});
 	
 	app.get('/removeLastScore', function(req, res){
+		var deleted = null;
 		Results.findAll({limit: 1, order: [['resultId', 'DESC']]}).then(results => {
-				resultsAll[0].destroy();
+				resultsAll[0].destroy().then(function(instance){
+				  // instance = null if row has not been deleted
+				  deleted = instance;
+				});
 		});
-		res.send("ok");
+		res.send("ok" + deleted);
 	});
   }
 }
