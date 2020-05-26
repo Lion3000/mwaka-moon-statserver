@@ -77,13 +77,13 @@ module.exports = {
 	app.get('/removeFirstScore', function(req, res){
 		var deleted = null;
 		Results.findOne({limit: 1, order: [['scoreChrono', 'DESC']]}).then(results => {
-				deleted = results;
+				deleted = console.log(JSON.stringify(results)) ;
 				/*results[0].destroy().then(function(instance){
 				  // instance = null if row has not been deleted
 				  deleted = instance;
 				});*/
 		});
-		res.send("instance deleted : " + deleted);
+		res.send("instance deleted : " + JSON.parse(JSON.stringify(deleted)));
 	});
   }
 }
