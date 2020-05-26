@@ -83,7 +83,7 @@ module.exports = {
 				  deleted = instance;
 				});*/
 		});
-		res.send("instance deleted : " + JSON.parse(JSON.stringify(deleted)));
+		res.send("instance deleted : " + deleted);
 	});
   }
 }
