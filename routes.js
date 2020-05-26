@@ -65,13 +65,15 @@ module.exports = {
 	
 	app.get('/removeLastScore', function(req, res){
 		var deleted = null;
+		var truc = null;
 		Results.findAll({limit: 1, order: [['resultId', 'DESC']]}).then(results => {
+				truc = results;
 				results[0].destroy().then(function(instance){
 				  // instance = null if row has not been deleted
 				  deleted = instance;
 				});
 		});
-		res.send("deleted instance :  " + deleted);
+		res.send("deleted instance :  " + deleted + " truc : " + truc);
 	});
   }
 }
