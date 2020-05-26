@@ -51,39 +51,27 @@ module.exports = {
 	});
 	
 	app.get('/removeAllScores', function(req, res){
-		var deleted = [];
 		Results.findAll().then(results => {
 			for(var i = 0; i < results.length; i++){
 				results[i].destroy().then(function(instance){
-				  // instance = null if row has not been deleted
-				  deleted[i] = instance;
 				});
 			}
 		});
-		res.send("deleted instances : " + deleted);
+		res.send("instances deleted");
 	});
 	
 	app.get('/removeLastScore', function(req, res){
-		//var deleted = null;
-		//var truc = null;
 		Results.findAll({limit: 1, order: [['resultId', 'DESC']]}).then(results => {
-				//truc = results;
 				results[0].destroy().then(function(instance){
-				  // instance = null if row has not been deleted
-				  //deleted = instance;
 				});
 		});
 		res.send("instance deleted");
 	});
 	
 	app.get('/removeFirstScore', function(req, res){
-		//var deleted = null;
-		//var truc = null;
 		Results.findAll({limit: 1, order: [['scoreChrono', 'ASC']]}).then(results => {
-				//truc = results;
+				
 				results[0].destroy().then(function(instance){
-				  // instance = null if row has not been deleted
-				 // deleted = instance;
 				});
 		});
 		res.send("instance deleted");
