@@ -21,7 +21,7 @@
     "co": "^4.6.0",
     "config": "^3.2.2",
     "cors": "^2.8.5",
-    "express": "^4.13.3",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "log4js": "^0.6.29",
     "mariadb": "^2.1.1",
